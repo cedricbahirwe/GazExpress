@@ -16,6 +16,8 @@ struct AuthenticationView: View {
     @State private var authModel = AuthModel()
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     
+    @Binding var navPath: NavigationPath
+    
     private var title: LocalizedStringKey {
         authFlow == .login ? "Login" : "Create Account"
     }
@@ -27,99 +29,95 @@ struct AuthenticationView: View {
     @Namespace private var animation
     
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 30) {
-                Text("Toleka")
-                    .font(.largeTitle)
-                    .fontDesign(.serif)
+        VStack(spacing: 30) {
+            Text("Toleka")
+                .font(.largeTitle)
+                .fontDesign(.serif)
+                .fontWeight(.bold)
+                .padding(30)
+            
+            VStack(spacing: 10) {
+                Text(title)
+                    .font(.title)
                     .fontWeight(.bold)
-                    .padding(30)
                 
-                VStack(spacing: 10) {
-                    Text(title)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    Text(subtitle)
+                Text(subtitle)
+            }
+            .padding(.bottom)
+            
+            Group {
+                
+                if authFlow == .register {
+                    TextField("Names", text:$authModel.names)
+                        .textContentType(.name)
                 }
-                .padding(.bottom)
                 
-                Group {
+                TextField("Phone Number", text: $authModel.phone)
+                    .textContentType(.telephoneNumber)
+                    .keyboardType(.phonePad)
+                
+                if authFlow == .register {
+                    TextField("(Kgs) weight of the bottle you own", text: $authModel.bottleWeight)
                     
-                    if authFlow == .register {
-                        TextField("Names", text:$authModel.names)
-                            .textContentType(.name)
+                    TextField("Address (eg: Himbi, Av Du Musee, No. 12)", text: $authModel.address)
+                        .textContentType(.fullStreetAddress)
+                }
+            }
+            .padding(.vertical)
+            .overlay(alignment: .bottom) {
+                Color.accentColor.frame(height: 1)
+            }
+            
+            VStack(spacing: 25) {
+                if authFlow == .login {
+                    LargeButton("Login") {
+                        isLoggedIn = true
+                        print("Is", isLoggedIn)
+                        navPath.append(NavRoute.home)
                     }
+                    .matchedGeometryEffect(id: "MainCTA", in: animation)
                     
-                    TextField("Phone Number", text: $authModel.phone)
-                        .textContentType(.telephoneNumber)
-                        .keyboardType(.phonePad)
                     
-                    if authFlow == .register {
-                        TextField("(Kgs) weight of the bottle you own", text: $authModel.bottleWeight)
-                        
-                        TextField("Address (eg: Himbi, Av Du Musee, No. 12)", text: $authModel.address)
-                            .textContentType(.fullStreetAddress)
+                    LargeButton("Create Account") {
+                        withAnimation {
+                            authFlow = .register
+                        }
                     }
-                }
-                .padding(.vertical)
-                .overlay(alignment: .bottom) {
-                    Color.accentColor.frame(height: 1)
-                }
-                
-                VStack(spacing: 25) {
+                    .matchedGeometryEffect(id: "SecondTCA", in: animation)
                     
-                    if authFlow == .login {
-                        LargeButton("Login" ) {
-                            isLoggedIn = true
+                } else {
+                    HStack(spacing: 25) {
+                        LargeButton("Back To Login!") {
+                            withAnimation {
+                                authFlow = .login
+                            }
                         }
                         .matchedGeometryEffect(id: "MainCTA", in: animation)
                         
-                        
-                        LargeButton("Create Account") {
-                            withAnimation {
-                                authFlow = .register
-                            }
+                        LargeButton("Continue") {
+                            
                         }
                         .matchedGeometryEffect(id: "SecondTCA", in: animation)
-                        
-                    } else {
-                        HStack(spacing: 25) {
-                            LargeButton("Back To Login!") {
-                                withAnimation {
-                                    authFlow = .login
-                                }
-                            }
-                            .matchedGeometryEffect(id: "MainCTA", in: animation)
-                            
-                            LargeButton("Continue") {
-                                
-                            }
-                            .matchedGeometryEffect(id: "SecondTCA", in: animation)
-                        }
                     }
                 }
-                
-                Spacer()
             }
-            .padding()
-            .toolbar(.hidden)
-            .navigationDestination(isPresented: $isLoggedIn) {
-                HomeView()
-            }
+            
+            Spacer()
         }
+        .padding()
+        .toolbar(.hidden)
     }
-    
-    struct AuthModel {
-        var names = ""
-        var phone = ""
-        var bottleWeight = ""
-        var address = ""
-    }
+}
+
+struct AuthModel {
+    var names = ""
+    var phone = ""
+    var bottleWeight = ""
+    var address = ""
 }
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView()
+        AuthenticationView(navPath: .constant(.init()))
     }
 }

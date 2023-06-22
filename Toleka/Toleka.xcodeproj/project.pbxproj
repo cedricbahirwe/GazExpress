@@ -10,6 +10,8 @@
 		CBA41C912A44D33D0019E0B7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C902A44D33D0019E0B7 /* HomeView.swift */; };
 		CBA41C952A44DC610019E0B7 /* GasTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C942A44DC610019E0B7 /* GasTariff.swift */; };
 		CBA41C982A44DC890019E0B7 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C972A44DC890019E0B7 /* LargeButton.swift */; };
+		CBA41C9A2A44E74B0019E0B7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C992A44E74B0019E0B7 /* ProfileView.swift */; };
+		CBA41C9C2A44E7550019E0B7 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C9B2A44E7550019E0B7 /* CartView.swift */; };
 		CBF7D2EB2A43942F00C845E6 /* TolekaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */; };
 		CBF7D2ED2A43942F00C845E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2EC2A43942F00C845E6 /* ContentView.swift */; };
 		CBF7D2EF2A43943100C845E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF7D2EE2A43943100C845E6 /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		CBA41C902A44D33D0019E0B7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CBA41C942A44DC610019E0B7 /* GasTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasTariff.swift; sourceTree = "<group>"; };
 		CBA41C972A44DC890019E0B7 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
+		CBA41C992A44E74B0019E0B7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CBA41C9B2A44E7550019E0B7 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		CBF7D2E72A43942F00C845E6 /* Toleka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toleka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TolekaApp.swift; sourceTree = "<group>"; };
 		CBF7D2EC2A43942F00C845E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,8 +90,11 @@
 		CBA41C922A44DC4D0019E0B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CBF7D2EC2A43942F00C845E6 /* ContentView.swift */,
 				CBF7D31D2A4397BF00C845E6 /* AuthenticationView.swift */,
 				CBA41C902A44D33D0019E0B7 /* HomeView.swift */,
+				CBA41C992A44E74B0019E0B7 /* ProfileView.swift */,
+				CBA41C9B2A44E7550019E0B7 /* CartView.swift */,
 				CBA41C962A44DC830019E0B7 /* Reusable Views */,
 			);
 			path = Views;
@@ -133,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */,
-				CBF7D2EC2A43942F00C845E6 /* ContentView.swift */,
 				CBA41C932A44DC520019E0B7 /* Models */,
 				CBA41C922A44DC4D0019E0B7 /* Views */,
 				CBF7D2EE2A43943100C845E6 /* Assets.xcassets */,
@@ -299,7 +305,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA41C9C2A44E7550019E0B7 /* CartView.swift in Sources */,
 				CBF7D2F42A43943100C845E6 /* Persistence.swift in Sources */,
+				CBA41C9A2A44E74B0019E0B7 /* ProfileView.swift in Sources */,
 				CBF7D2ED2A43942F00C845E6 /* ContentView.swift in Sources */,
 				CBF7D2EB2A43942F00C845E6 /* TolekaApp.swift in Sources */,
 				CBA41C982A44DC890019E0B7 /* LargeButton.swift in Sources */,

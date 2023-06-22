@@ -8,24 +8,28 @@
 import SwiftUI
 
 struct HomeView: View {
-    let tariffs = [
+    private let tariffs = [
         GasTariff(type: "6Kg", price: 15),
         GasTariff(type: "12Kg", price: 30),
         GasTariff(type: "15Kg", price: 36)
     ]
-    
     @AppStorage("isLoggedIn") private var isLoggedIn = false
+    @State private var goToProfile = false
+    @State private var goToCart = false
+    
+    @Binding var navPath: NavigationPath
     
     var body: some View {
         VStack {
             VStack(spacing: 25) {
                 HStack {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .onTapGesture {
-                            isLoggedIn = false
-                        }
+                    
+                    NavigationLink(value: NavRoute.profile) {
+                        Image(systemName: "person.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                    }
+                    
                     Spacer()
                     
                     Text("Toleka")
@@ -34,11 +38,11 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "cart.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                    
-                    
+                    NavigationLink(value: NavRoute.cart) {
+                        Image(systemName: "cart.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                    }
                 }
                 .foregroundColor(.white)
                 
@@ -51,6 +55,9 @@ struct HomeView: View {
                     
                     ForEach(tariffs, id: \.self) { tariff in
                         Text("❖ \(tariff.type) = \(Int(tariff.price))$")
+                            .onTapGesture {
+                                print("Is", isLoggedIn)
+                            }
                     }
                 }
                 .padding()
@@ -88,7 +95,10 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                
+                Button("Logout", role: .destructive) {
+                    isLoggedIn = false
+//                    navPath.removeLast(navPath.count)
+                }                
             }
             .padding(30)
         }
@@ -99,7 +109,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            HomeView()
+            HomeView(navPath: .constant(.init()))
         }
     }
 }
@@ -116,7 +126,6 @@ struct ItemSelectionView: View {
                 .scaledToFit()
                 .frame(maxWidth: 80)
                 .foregroundColor(.accentColor)
-//                .background(.red)
             
             Text(title)
                 .font(.headline)
@@ -135,4 +144,10 @@ struct ItemSelectionView: View {
         .contentShape(Rectangle())
         .onTapGesture(perform: action)
     }
+}
+
+enum NavRoute: Hashable {
+    case home
+    case profile
+    case cart
 }
