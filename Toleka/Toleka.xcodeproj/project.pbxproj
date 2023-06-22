@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBA41C912A44D33D0019E0B7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C902A44D33D0019E0B7 /* HomeView.swift */; };
+		CBA41C952A44DC610019E0B7 /* GasTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C942A44DC610019E0B7 /* GasTariff.swift */; };
+		CBA41C982A44DC890019E0B7 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C972A44DC890019E0B7 /* LargeButton.swift */; };
 		CBF7D2EB2A43942F00C845E6 /* TolekaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */; };
 		CBF7D2ED2A43942F00C845E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2EC2A43942F00C845E6 /* ContentView.swift */; };
 		CBF7D2EF2A43943100C845E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF7D2EE2A43943100C845E6 /* Assets.xcassets */; };
@@ -16,8 +19,6 @@
 		CBF7D3012A43943100C845E6 /* TolekaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D3002A43943100C845E6 /* TolekaTests.swift */; };
 		CBF7D30B2A43943100C845E6 /* TolekaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D30A2A43943100C845E6 /* TolekaUITests.swift */; };
 		CBF7D30D2A43943100C845E6 /* TolekaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D30C2A43943100C845E6 /* TolekaUITestsLaunchTests.swift */; };
-		CBF7D31A2A4397AD00C845E6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D3192A4397AD00C845E6 /* LoginView.swift */; };
-		CBF7D31C2A4397B000C845E6 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D31B2A4397B000C845E6 /* RegisterView.swift */; };
 		CBF7D31E2A4397BF00C845E6 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D31D2A4397BF00C845E6 /* AuthenticationView.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CBA41C902A44D33D0019E0B7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CBA41C942A44DC610019E0B7 /* GasTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasTariff.swift; sourceTree = "<group>"; };
+		CBA41C972A44DC890019E0B7 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		CBF7D2E72A43942F00C845E6 /* Toleka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toleka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TolekaApp.swift; sourceTree = "<group>"; };
 		CBF7D2EC2A43942F00C845E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,8 +55,6 @@
 		CBF7D3062A43943100C845E6 /* TolekaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TolekaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF7D30A2A43943100C845E6 /* TolekaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TolekaUITests.swift; sourceTree = "<group>"; };
 		CBF7D30C2A43943100C845E6 /* TolekaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TolekaUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CBF7D3192A4397AD00C845E6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		CBF7D31B2A4397B000C845E6 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		CBF7D31D2A4397BF00C845E6 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CBA41C922A44DC4D0019E0B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7D31D2A4397BF00C845E6 /* AuthenticationView.swift */,
+				CBA41C902A44D33D0019E0B7 /* HomeView.swift */,
+				CBA41C962A44DC830019E0B7 /* Reusable Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CBA41C932A44DC520019E0B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBA41C942A44DC610019E0B7 /* GasTariff.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CBA41C962A44DC830019E0B7 /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBA41C972A44DC890019E0B7 /* LargeButton.swift */,
+			);
+			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
 		CBF7D2DE2A43942F00C845E6 = {
 			isa = PBXGroup;
 			children = (
@@ -106,9 +134,8 @@
 			children = (
 				CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */,
 				CBF7D2EC2A43942F00C845E6 /* ContentView.swift */,
-				CBF7D31D2A4397BF00C845E6 /* AuthenticationView.swift */,
-				CBF7D3192A4397AD00C845E6 /* LoginView.swift */,
-				CBF7D31B2A4397B000C845E6 /* RegisterView.swift */,
+				CBA41C932A44DC520019E0B7 /* Models */,
+				CBA41C922A44DC4D0019E0B7 /* Views */,
 				CBF7D2EE2A43943100C845E6 /* Assets.xcassets */,
 				CBF7D2F32A43943100C845E6 /* Persistence.swift */,
 				CBF7D2F52A43943100C845E6 /* Toleka.xcdatamodeld */,
@@ -275,9 +302,10 @@
 				CBF7D2F42A43943100C845E6 /* Persistence.swift in Sources */,
 				CBF7D2ED2A43942F00C845E6 /* ContentView.swift in Sources */,
 				CBF7D2EB2A43942F00C845E6 /* TolekaApp.swift in Sources */,
+				CBA41C982A44DC890019E0B7 /* LargeButton.swift in Sources */,
+				CBA41C912A44D33D0019E0B7 /* HomeView.swift in Sources */,
+				CBA41C952A44DC610019E0B7 /* GasTariff.swift in Sources */,
 				CBF7D31E2A4397BF00C845E6 /* AuthenticationView.swift in Sources */,
-				CBF7D31C2A4397B000C845E6 /* RegisterView.swift in Sources */,
-				CBF7D31A2A4397AD00C845E6 /* LoginView.swift in Sources */,
 				CBF7D2F72A43943100C845E6 /* Toleka.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
