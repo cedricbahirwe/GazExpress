@@ -65,21 +65,22 @@ struct HomeView: View {
             VStack {
                 Grid(horizontalSpacing: 30, verticalSpacing: 30) {
                     GridRow {
-                        ItemSelectionView(icon: "book", title: "Buy New") {
+                        ItemSelectionView(icon: Image("gas-container"), title: "Buy New") {
                             
                         }
                         
-                        ItemSelectionView(icon: "book", title: "Refill Gas") {
+                        ItemSelectionView(icon: Image("gas-refill"), title: "Refill Gas") {
                             
                         }
                     }
                     
                     GridRow {
-                        ItemSelectionView(icon: "book", title: "Call Us ") {
+                        ItemSelectionView(icon: Image(systemName: "phone.and.waveform"), title: "Call Us ") {
                             
                         }
                         
-                        ItemSelectionView(icon: "book", title: "Historic") {
+                        ItemSelectionView(icon:
+                                            Image(systemName: "clock.arrow.2.circlepath"), title: "Historic") {
                             
                         }
                     }
@@ -104,17 +105,18 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 struct ItemSelectionView: View {
-    let icon: String
+    let icon: Image
     let title: String
     let action: () -> Void
     
     var body: some View {
         VStack(spacing: 20) {
-            Image(systemName: icon)
+            icon
                 .resizable()
                 .scaledToFit()
-                .frame(width: 80)
+                .frame(maxWidth: 80)
                 .foregroundColor(.accentColor)
+//                .background(.red)
             
             Text(title)
                 .font(.headline)
