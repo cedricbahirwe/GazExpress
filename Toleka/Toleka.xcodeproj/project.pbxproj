@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB6CD7802A458DC2006241CC /* CartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CD77F2A458DC2006241CC /* CartData.swift */; };
+		CB6CD7822A458DCB006241CC /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CD7812A458DCB006241CC /* ProfileData.swift */; };
 		CBA41C912A44D33D0019E0B7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C902A44D33D0019E0B7 /* HomeView.swift */; };
 		CBA41C952A44DC610019E0B7 /* GasTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C942A44DC610019E0B7 /* GasTariff.swift */; };
 		CBA41C982A44DC890019E0B7 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C972A44DC890019E0B7 /* LargeButton.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB6CD77F2A458DC2006241CC /* CartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartData.swift; sourceTree = "<group>"; };
+		CB6CD7812A458DCB006241CC /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		CBA41C902A44D33D0019E0B7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CBA41C942A44DC610019E0B7 /* GasTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasTariff.swift; sourceTree = "<group>"; };
 		CBA41C972A44DC890019E0B7 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				CBA41C942A44DC610019E0B7 /* GasTariff.swift */,
+				CB6CD77F2A458DC2006241CC /* CartData.swift */,
+				CB6CD7812A458DCB006241CC /* ProfileData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6CD7802A458DC2006241CC /* CartData.swift in Sources */,
 				CBA41C9C2A44E7550019E0B7 /* CartView.swift in Sources */,
 				CBF7D2F42A43943100C845E6 /* Persistence.swift in Sources */,
 				CBA41C9A2A44E74B0019E0B7 /* ProfileView.swift in Sources */,
@@ -315,6 +322,7 @@
 				CBA41C952A44DC610019E0B7 /* GasTariff.swift in Sources */,
 				CBF7D31E2A4397BF00C845E6 /* AuthenticationView.swift in Sources */,
 				CBF7D2F72A43943100C845E6 /* Toleka.xcdatamodeld in Sources */,
+				CB6CD7822A458DCB006241CC /* ProfileData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

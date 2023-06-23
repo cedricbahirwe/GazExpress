@@ -13,7 +13,7 @@ struct AuthenticationView: View {
     }
     
     @State private var authFlow: AuthFlow = .login
-    @State private var authModel = AuthModel()
+    @State private var authModel = ProfileData()
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     
     @Binding var navPath: NavigationPath
@@ -72,7 +72,6 @@ struct AuthenticationView: View {
                 if authFlow == .login {
                     LargeButton("Login") {
                         isLoggedIn = true
-                        print("Is", isLoggedIn)
                         navPath.append(NavRoute.home)
                     }
                     .matchedGeometryEffect(id: "MainCTA", in: animation)
@@ -107,13 +106,6 @@ struct AuthenticationView: View {
         .padding()
         .toolbar(.hidden)
     }
-}
-
-struct AuthModel {
-    var names = ""
-    var phone = ""
-    var bottleWeight = ""
-    var address = ""
 }
 
 struct AuthenticationView_Previews: PreviewProvider {

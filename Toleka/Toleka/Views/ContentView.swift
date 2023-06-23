@@ -23,15 +23,13 @@ struct ContentView: View {
         NavigationStack(path: $navPath) {
             AuthenticationView(navPath: $navPath)
                 .onChange(of: isLoggedIn) { newValue in
-                    print("New value", newValue)
                     if newValue {
                         navPath.removeLast(navPath.count)
                     }
                 }
                 .onAppear() {
-                    print("On Appear", isLoggedIn)
                     if isLoggedIn {
-                        navPath.append(NavRoute.home)
+//                        navPath.append(NavRoute.home)
                     }
                     
                 }
@@ -39,9 +37,9 @@ struct ContentView: View {
                     switch newRoute {
                     case .home:
                         HomeView(navPath: $navPath)
-                    case .profile:
-                        ProfileView()
-                    case .cart:
+                    case let .profile(profile):
+                        ProfileView(profile: profile)
+                    case let .cart(cart):
                         CartView()
                     }
                 }

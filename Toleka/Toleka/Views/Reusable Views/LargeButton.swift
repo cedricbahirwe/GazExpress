@@ -10,18 +10,21 @@ import SwiftUI
 
 struct LargeButton: View {
     let title: LocalizedStringKey
+    let tintColor: Color
     let radius: CGFloat
     let action: () -> Void
     let state: ButtonState
     
     init(
         _ title: LocalizedStringKey,
+        tint: Color = .accentColor,
         radius: CGFloat = 12,
         state: ButtonState = .enabled,
         action: @escaping () -> Void
     ) {
         
         self.title = title
+        self.tintColor = tint
         self.radius = radius
         self.state = state
         self.action = action
@@ -43,7 +46,7 @@ struct LargeButton: View {
             .padding()
             .frame(maxWidth: .infinity)
             .foregroundColor(.white)
-            .background(Color.accentColor)
+            .background(tintColor)
             .cornerRadius(radius)
         }
         .disabled(state != .enabled)

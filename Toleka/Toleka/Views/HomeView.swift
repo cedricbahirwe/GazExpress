@@ -24,7 +24,7 @@ struct HomeView: View {
             VStack(spacing: 25) {
                 HStack {
                     
-                    NavigationLink(value: NavRoute.profile) {
+                    NavigationLink(value: NavRoute.profile(.init())) {
                         Image(systemName: "person.circle.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
@@ -38,7 +38,7 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    NavigationLink(value: NavRoute.cart) {
+                    NavigationLink(value: NavRoute.cart(.init())) {
                         Image(systemName: "cart.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
@@ -55,9 +55,6 @@ struct HomeView: View {
                     
                     ForEach(tariffs, id: \.self) { tariff in
                         Text("❖ \(tariff.type) = \(Int(tariff.price))$")
-                            .onTapGesture {
-                                print("Is", isLoggedIn)
-                            }
                     }
                 }
                 .padding()
@@ -148,6 +145,6 @@ struct ItemSelectionView: View {
 
 enum NavRoute: Hashable {
     case home
-    case profile
-    case cart
+    case profile(ProfileData)
+    case cart(CartData)
 }
