@@ -154,6 +154,7 @@ struct ItemSelectionView: View {
             Text(title)
                 .font(.headline)
                 .fontDesign(.rounded)
+                .foregroundColor(.primary)
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -21,8 +21,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $navPath) {
-            HomeView(navPath: $navPath)
-//            AuthenticationView(navPath: $navPath)
+            AuthenticationView(navPath: $navPath)
                 .onChange(of: isLoggedIn) { newValue in
                     if newValue {
                         navPath.removeLast(navPath.count)

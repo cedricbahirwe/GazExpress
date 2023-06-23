@@ -21,12 +21,13 @@ struct CartPreview: View {
                 .foregroundColor(.secondary)
             
             TitledFieldView(title: "Quantity", text: $entry)
+                .keyboardType(.numberPad)
             
-            Text("1 * 15$ = 30$")
+            Text("Total: 1 * 15$ = 30$")
                 .fontDesign(.rounded)
             
             HStack {
-                LargeButton("Order Now", tint: .primary) { }
+                LargeButton("Order Now", tint: .primary, foreground: Color(.systemBackground)) { }
                 
                 LargeButton("Add To Cart") { }
             }
