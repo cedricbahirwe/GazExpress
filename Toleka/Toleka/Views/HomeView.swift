@@ -19,6 +19,8 @@ struct HomeView: View {
     
     @Binding var navPath: NavigationPath
     
+    @State private var presentCallActionSheet = false
+    
     var body: some View {
         VStack {
             VStack(spacing: 25) {
@@ -79,9 +81,18 @@ struct HomeView: View {
                     }
                     
                     GridRow {
-                        ItemSelectionView(icon: Image(systemName: "phone.and.waveform"), title: "Call Us ") {
-                            
+                        ItemSelectionView(icon: Image(systemName: "phone.and.waveform"), title: "Contact Us ") {
+                            presentCallActionSheet.toggle()
                         }
+                        .confirmationDialog(
+                            "Call Us",
+                            isPresented: $presentCallActionSheet,
+                            titleVisibility: .hidden) {
+                                Button("Call Us") {  }
+                                Button("WhatsApp") {
+                                    UIApplication.shared.open(URL(string: "https://wa.me/250782628511?text=I%20would%20like%20to%20order%20one%20bottle%20of%20cooking%20gas")!)
+                                }
+                            }
                         
                         ItemSelectionView(icon:
                                             Image(systemName: "clock.arrow.2.circlepath"), title: "Historic") {
@@ -91,11 +102,6 @@ struct HomeView: View {
                 }
                 
                 Spacer()
-                
-                Button("Logout", role: .destructive) {
-                    isLoggedIn = false
-//                    navPath.removeLast(navPath.count)
-                }                
             }
             .padding(30)
         }
