@@ -88,10 +88,8 @@ struct HomeView: View {
                             "Call Us",
                             isPresented: $presentCallActionSheet,
                             titleVisibility: .hidden) {
-                                Button("Call Us") {  }
-                                Button("WhatsApp") {
-                                    openWhatsApp()
-                                }
+                                Button("Call Us", action: openPhone)
+                                Button("WhatsApp", action: openWhatsApp)
                             }
                         
                         ItemSelectionView(icon:
@@ -109,15 +107,26 @@ struct HomeView: View {
     }
     
     private func openWhatsApp() {
-            if let whatsappURL = URL(string: "https://wa.me/250782628511?text=I%20would%20like%20to%20order%20one%20bottle%20of%20cooking%20gas") {
-                if UIApplication.shared.canOpenURL(whatsappURL) {
-                    UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
-                } else {
-                    // WhatsApp is not installed on the device
-                    // Handle this case or prompt the user to install WhatsApp
-                }
+        if let whatsappURL = URL(string: "https://wa.me/250782628511?text=I%20would%20like%20to%20order%20one%20bottle%20of%20cooking%20gas") {
+            if UIApplication.shared.canOpenURL(whatsappURL) {
+                UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+            } else {
+                // WhatsApp is not installed on the device
+                // Handle this case or prompt the user to install WhatsApp
             }
         }
+    }
+    
+    private func openPhone() {
+        if let phoneURL = URL(string: "tel://250782628511") {
+            if UIApplication.shared.canOpenURL(phoneURL) {
+                UIApplication.shared.open(phoneURL)
+            } else {
+                // Phone is not installed on the device
+                // Handle this case or prompt the user to install WhatsApp
+            }
+        }
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {
