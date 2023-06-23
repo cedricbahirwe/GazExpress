@@ -40,7 +40,7 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    NavigationLink(value: NavRoute.cart(.init())) {
+                    NavigationLink(value: NavRoute.cart) {
                         Image(systemName: "cart.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
@@ -71,8 +71,9 @@ struct HomeView: View {
             VStack {
                 Grid(horizontalSpacing: 30, verticalSpacing: 30) {
                     GridRow {
-                        ItemSelectionView(icon: Image("gas-container"), title: "Buy New") {
-                            
+                        
+                        NavigationLink(value: NavRoute.buyNew) {
+                            ItemSelectionView(icon: Image("gas-container"), title: "Buy New")
                         }
                         
                         ItemSelectionView(icon: Image("gas-refill"), title: "Refill Gas") {
@@ -92,9 +93,9 @@ struct HomeView: View {
                                 Button("WhatsApp", action: openWhatsApp)
                             }
                         
-                        ItemSelectionView(icon:
-                                            Image(systemName: "clock.arrow.2.circlepath"), title: "Historic") {
-                            
+                        NavigationLink(value: NavRoute.history) {
+                             ItemSelectionView(icon:
+                                                Image(systemName: "clock.arrow.2.circlepath"), title: "Historic")
                         }
                     }
                 }
@@ -140,9 +141,9 @@ struct HomeView_Previews: PreviewProvider {
 struct ItemSelectionView: View {
     let icon: Image
     let title: String
-    let action: () -> Void
+    var action: (() -> Void)? = nil
     
-    var body: some View {
+    private var contentView: some View {
         VStack(spacing: 20) {
             icon
                 .resizable()
@@ -164,13 +165,23 @@ struct ItemSelectionView: View {
                 .stroke(Material.thickMaterial, lineWidth: 3)
         })
         .shadow(radius: 0.1)
-        .contentShape(Rectangle())
-        .onTapGesture(perform: action)
+    }
+    
+    var body: some View {
+        if let action {
+            contentView
+                .contentShape(Rectangle())
+                .onTapGesture(perform: action)
+        } else {
+            contentView
+        }
     }
 }
 
 enum NavRoute: Hashable {
     case home
     case profile(ProfileData)
-    case cart(CartData)
+    case cart
+    case history
+    case buyNew
 }
