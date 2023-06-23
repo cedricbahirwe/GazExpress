@@ -40,7 +40,7 @@ struct ContentView: View {
                         HomeView(navPath: $navPath)
                     case let .profile(profile):
                         ProfileView(profile: profile, navPath: $navPath)
-                    case let .cart:
+                    case .cart:
                         CartView()
                     case .history:
                         HistoryView()

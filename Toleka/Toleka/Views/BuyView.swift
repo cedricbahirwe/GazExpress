@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BuyView: View {
+    @State private var showCartPreview = false
+    
     var body: some View {
         List {
             ForEach(0..<15) { i in
@@ -33,6 +35,11 @@ struct BuyView: View {
                 .shadow(radius: 0.2)
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
+                .onTapGesture {
+                    withAnimation {
+                        showCartPreview = true
+                    }
+                }
             }
         }
         .listStyle(.plain)
@@ -46,6 +53,12 @@ struct BuyView: View {
             }
         }
         .navigationTitle("New Purchase")
+        .sheet(isPresented: $showCartPreview) {
+            CartPreview()
+                .presentationDetents([.height(250)])
+                .presentationBackground(.ultraThinMaterial)
+                .presentationCornerRadius(20)
+        }
     }
 }
 

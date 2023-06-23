@@ -11,6 +11,7 @@
 		CB45516F2A45E1D1000BD0B1 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB45516E2A45E1D1000BD0B1 /* PurchaseView.swift */; };
 		CB4551712A45E217000BD0B1 /* RefillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4551702A45E217000BD0B1 /* RefillView.swift */; };
 		CB4551732A45E223000BD0B1 /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4551722A45E223000BD0B1 /* BuyView.swift */; };
+		CB4551752A45EADD000BD0B1 /* CartPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4551742A45EADD000BD0B1 /* CartPreview.swift */; };
 		CB6CD7802A458DC2006241CC /* CartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CD77F2A458DC2006241CC /* CartData.swift */; };
 		CB6CD7822A458DCB006241CC /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CD7812A458DCB006241CC /* ProfileData.swift */; };
 		CB6CD7842A45A70D006241CC /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CD7832A45A70D006241CC /* Protocols.swift */; };
@@ -53,6 +54,7 @@
 		CB45516E2A45E1D1000BD0B1 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 		CB4551702A45E217000BD0B1 /* RefillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefillView.swift; sourceTree = "<group>"; };
 		CB4551722A45E223000BD0B1 /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
+		CB4551742A45EADD000BD0B1 /* CartPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPreview.swift; sourceTree = "<group>"; };
 		CB6CD77F2A458DC2006241CC /* CartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartData.swift; sourceTree = "<group>"; };
 		CB6CD7812A458DCB006241CC /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		CB6CD7832A45A70D006241CC /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				CBA41C9B2A44E7550019E0B7 /* CartView.swift */,
 				CB45516E2A45E1D1000BD0B1 /* PurchaseView.swift */,
 				CB4551722A45E223000BD0B1 /* BuyView.swift */,
+				CB4551742A45EADD000BD0B1 /* CartPreview.swift */,
 				CB4551702A45E217000BD0B1 /* RefillView.swift */,
 				CBA41C962A44DC830019E0B7 /* Reusable Views */,
 			);
@@ -334,6 +337,7 @@
 				CB4551732A45E223000BD0B1 /* BuyView.swift in Sources */,
 				CB45516F2A45E1D1000BD0B1 /* PurchaseView.swift in Sources */,
 				CB4551712A45E217000BD0B1 /* RefillView.swift in Sources */,
+				CB4551752A45EADD000BD0B1 /* CartPreview.swift in Sources */,
 				CBA41C9A2A44E74B0019E0B7 /* ProfileView.swift in Sources */,
 				CBF7D2ED2A43942F00C845E6 /* ContentView.swift in Sources */,
 				CBF7D2EB2A43942F00C845E6 /* TolekaApp.swift in Sources */,
