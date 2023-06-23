@@ -48,6 +48,7 @@
 		CB6CD77F2A458DC2006241CC /* CartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartData.swift; sourceTree = "<group>"; };
 		CB6CD7812A458DCB006241CC /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		CB6CD7832A45A70D006241CC /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		CB9E29C52A45AED8006C5938 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CBA41C902A44D33D0019E0B7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CBA41C942A44DC610019E0B7 /* GasTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasTariff.swift; sourceTree = "<group>"; };
 		CBA41C972A44DC890019E0B7 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
@@ -148,6 +149,7 @@
 		CBF7D2E92A43942F00C845E6 /* Toleka */ = {
 			isa = PBXGroup;
 			children = (
+				CB9E29C52A45AED8006C5938 /* Info.plist */,
 				CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */,
 				CBA41C932A44DC520019E0B7 /* Models */,
 				CBA41C922A44DC4D0019E0B7 /* Views */,
@@ -488,6 +490,7 @@
 				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Toleka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -517,6 +520,7 @@
 				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Toleka/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
