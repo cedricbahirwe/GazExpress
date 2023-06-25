@@ -11,6 +11,8 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+    @StateObject private var orderVM = OrderViewModel()
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
@@ -44,7 +46,7 @@ struct ContentView: View {
                     case .history:
                         HistoryView()
                     case .buyNew:
-                        BuyView()
+                        BuyView(orderVM: orderVM)
                     }
                 }
         }

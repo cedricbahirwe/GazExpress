@@ -7,24 +7,57 @@
 
 import SwiftUI
 
+struct Order {
+    let itemName: String
+    let itemSubtitle: String
+    let price: Double
+    
+    var quantity: Int
+    let totalQuantity: Int
+    
+    var totalPrice: Double {
+        Double(quantity) * price
+    }
+    
+    static let example = Order(itemName: "Pipe Connector(3)", itemSubtitle: "Two different Cylinders pipe Connections", price: 15, quantity: 1, totalQuantity: 10)
+}
 struct CartPreview: View {
-    @State private var entry = ""
+    private let item: Order
+    
+    @State private var quantity: Int
+    
+    var onOrderNowClicked: (Order) -> Void
+    var onAddToCartClicked: (Order) -> Void = { _ in }
+    var onQuantityChanged: (Int) -> Void = { _ in }
+    
+    init(item: Order,
+         onOrderNowClicked: @escaping (Order) -> Void = { _ in },
+         onAddToCartClicked: @escaping (Order) -> Void = { _ in },
+         onQuantityChanged: @escaping (Int) -> Void = { _ in }) {
+        self.item = item
+        self._quantity = State(wrappedValue: item.quantity)
+        self.onOrderNowClicked = onOrderNowClicked
+        self.onAddToCartClicked = onAddToCartClicked
+        self.onQuantityChanged = onQuantityChanged
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Gas bottles")
+            Text(item.itemName)
                 .font(.title2)
                 .fontDesign(.rounded)
                 .textCase(.uppercase)
             
-            Text("Click to select yours")
+            Text(item.itemSubtitle)
                 .font(.headline)
                 .foregroundColor(.secondary)
             
-            TitledFieldView(title: "Quantity", text: $entry)
-                .keyboardType(.numberPad)
+            Stepper("Enter Quantity: ", value: $quantity, in: 1...item.totalQuantity)
+                .onChange(of: quantity, perform: onQuantityChanged)
             
-            Text("Total: 1 * 15$ = 30$")
+            Text("Total: \(item.quantity) * \(String(format: "%.2f$ = %.2f", item.price, item.totalPrice))$")
                 .fontDesign(.rounded)
+                .fontWeight(.bold)
             
             HStack {
                 LargeButton("Order Now", tint: .primary, foreground: Color(.systemBackground)) { }
@@ -39,7 +72,7 @@ struct CartPreview: View {
 
 struct CartPreview_Previews: PreviewProvider {
     static var previews: some View {
-        CartPreview()
+        CartPreview(item: .example)
             .previewLayout(.sizeThatFits)
     }
 }
@@ -70,14 +103,14 @@ struct TitledFieldView: View {
                 .focused($isFocused)
                 .padding(.vertical, 10)
                 .background(alignment: .leading) {
-                    if !showTitle { titleView }
+                    if text.isEmpty && !showTitle { titleView }
                 }
                 .overlay(alignment: .bottom) {
                     Color.accentColor.frame(height: 1)
                 }
-                .onChange(of: isFocused) { newValue in
+                .onChange(of: text) { newValue in
                     withAnimation {
-                        showTitle = newValue
+                        showTitle = !newValue.isEmpty
                     }
                 }
         }

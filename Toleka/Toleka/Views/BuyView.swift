@@ -9,10 +9,10 @@ import SwiftUI
 
 struct BuyView: View {
     @State private var showCartPreview = false
-    
+    @ObservedObject var orderVM: OrderViewModel
     var body: some View {
         List {
-            ForEach(0..<15) { i in
+            ForEach(orderVM.products) { product in
                 HStack {
                     Image("gas-container")
                         .resizable()
@@ -20,10 +20,11 @@ struct BuyView: View {
                         .frame(width: 60, height: 60)
 
                     VStack(alignment: .leading) {
-                        Text("Gas bottles")
+                        Text(product.name)
                             .textCase(.uppercase)
-                        Text("12 $")
-                        Text("Click to select yours")
+                        Text(String(format: "%.2f", product.price) + " " + product.currency.symbol)
+
+                        Text(product.subtitle)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -38,6 +39,7 @@ struct BuyView: View {
                 .onTapGesture {
                     withAnimation {
                         showCartPreview = true
+                        orderVM.setOrderFor(product)
                     }
                 }
             }
@@ -54,10 +56,12 @@ struct BuyView: View {
         }
         .navigationTitle("New Purchase")
         .sheet(isPresented: $showCartPreview) {
-            CartPreview()
-                .presentationDetents([.height(250)])
-                .presentationBackground(.ultraThinMaterial)
-                .presentationCornerRadius(20)
+            CartPreview(item: orderVM.order, onQuantityChanged: { newQuantity in
+                self.orderVM.updateQuantity(newQuantity)
+            })
+            .presentationDetents([.height(250)])
+            .presentationBackground(.ultraThinMaterial)
+            .presentationCornerRadius(20)
         }
     }
 }
@@ -65,7 +69,7 @@ struct BuyView: View {
 struct BuyView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            BuyView()
+            BuyView(orderVM: OrderViewModel())
                 .navigationBarTitleDisplayMode(.inline)
         }
     }
