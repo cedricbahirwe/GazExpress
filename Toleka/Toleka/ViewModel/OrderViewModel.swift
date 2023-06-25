@@ -34,6 +34,13 @@ final class OrderViewModel: ObservableObject {
                            totalQuantity: product.available)
     }
     
+    func addOrderToCart(_ order: Order) {
+        
+    }
+    
+    func orderNow(_ order: Order) {
+        
+    }
     
     func generateProducts() -> [Product] {
         var products: [Product] = []

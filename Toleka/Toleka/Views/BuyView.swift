@@ -56,11 +56,12 @@ struct BuyView: View {
         }
         .navigationTitle("New Purchase")
         .sheet(isPresented: $showCartPreview) {
-            CartPreview(item: orderVM.order, onQuantityChanged: { newQuantity in
-                self.orderVM.updateQuantity(newQuantity)
-            })
+            CartPreview(item: orderVM.order,
+                        onOrderNowClicked: orderVM.orderNow,
+                        onAddToCartClicked: orderVM.addOrderToCart,
+                        onQuantityChanged: orderVM.updateQuantity)
             .presentationDetents([.height(250)])
-            .presentationBackground(.ultraThinMaterial)
+            .presentationBackground(.ultraThickMaterial)
             .presentationCornerRadius(20)
         }
     }
