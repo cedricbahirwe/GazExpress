@@ -42,6 +42,7 @@ struct LargeButton: View {
                         .tint(.white)
                 } else {
                     Text(title)
+                        .lineLimit(1)
                 }
             }
             .font(.headline)
@@ -51,6 +52,8 @@ struct LargeButton: View {
             .foregroundColor(foreground)
             .background(tintColor)
             .cornerRadius(radius)
+            .minimumScaleFactor(0.9)
+
         }
         .disabled(state != .enabled)
     }

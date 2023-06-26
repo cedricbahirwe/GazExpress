@@ -18,15 +18,16 @@ struct Product: Identifiable {
     let currency: Currency
     let weight: Double
     let available: Int = 10
+    
+    
+    static let example = Product(id: UUID(), coverImage: "image1.jpg", name: "12kg Propane Cylinder", subtitle: "Suitable for cooking purposes", description: "This 12kg propane cylinder is perfect for home cooking.", price: 50, currency: .usd, weight: 12)
+
 }
 
 enum Currency: String {
     case cdf, usd
     
-    var symbol: String {
-        switch self {
-        case .cdf: return "CDF"
-        case .usd: return "$"
-        }
+    var code: String {
+        rawValue.uppercased()
     }
 }

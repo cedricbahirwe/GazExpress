@@ -46,16 +46,31 @@ struct ContentView: View {
                     case .history:
                         HistoryView()
                     case .buyNew:
-                        BuyView(orderVM: orderVM)
+                        BuyView(navPath: $navPath, orderVM: orderVM)
+                    case .checkout:
+                        CheckoutView(order: orderVM.order,
+                                     locations: orderVM.getLocations()) {
+                            navPath.removeLast()
+                        } onPayWithMomo: { location, address in
+                            orderVM.checkoutOrder()
+                        }
                     }
                 }
         }
     }
 }
 
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
+}
+
+enum NavRoute: Hashable {
+    case home
+    case profile(ProfileData)
+    case cart
+    case history
+    case buyNew
+    case checkout
 }

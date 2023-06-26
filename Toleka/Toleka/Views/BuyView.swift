@@ -8,40 +8,22 @@
 import SwiftUI
 
 struct BuyView: View {
+    @Binding var navPath: NavigationPath
+
     @State private var showCartPreview = false
     @ObservedObject var orderVM: OrderViewModel
     var body: some View {
         List {
             ForEach(orderVM.products) { product in
-                HStack {
-                    Image("gas-container")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 60, height: 60)
-
-                    VStack(alignment: .leading) {
-                        Text(product.name)
-                            .textCase(.uppercase)
-                        Text(String(format: "%.2f", product.price) + " " + product.currency.symbol)
-
-                        Text(product.subtitle)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                ProductRowView(product: product)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .onTapGesture {
+                        withAnimation {
+                            showCartPreview = true
+                            orderVM.setOrderFor(product)
+                        }
                     }
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(.background)
-                .cornerRadius(12)
-                .shadow(radius: 0.2)
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
-                .onTapGesture {
-                    withAnimation {
-                        showCartPreview = true
-                        orderVM.setOrderFor(product)
-                    }
-                }
             }
         }
         .listStyle(.plain)
@@ -52,12 +34,16 @@ struct BuyView: View {
                 Image(systemName: "cart.fill")
                     .resizable()
                     .frame(width: 30, height: 30)
+                
             }
         }
         .navigationTitle("New Purchase")
         .sheet(isPresented: $showCartPreview) {
             CartPreview(item: orderVM.order,
-                        onOrderNowClicked: orderVM.orderNow,
+                        onOrderNowClicked: {
+                navPath.append(NavRoute.checkout)
+                
+            },
                         onAddToCartClicked: orderVM.addOrderToCart,
                         onQuantityChanged: orderVM.updateQuantity)
             .presentationDetents([.height(250)])
@@ -70,8 +56,38 @@ struct BuyView: View {
 struct BuyView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            BuyView(orderVM: OrderViewModel())
+            BuyView(navPath: .constant(.init()), orderVM: OrderViewModel())
                 .navigationBarTitleDisplayMode(.inline)
+            
         }
+    }
+}
+
+struct ProductRowView: View {
+    let product: Product
+    var isPreview: Bool = false
+    
+    var body: some View {
+        HStack {
+            Image("gas-container")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60, height: 60)
+            
+            VStack(alignment: .leading) {
+                Text(product.name)
+                    .textCase(.uppercase)
+                Text(product.price, format: .currency(code: product.currency.code))
+                
+                Text(product.subtitle)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.background)
+        .cornerRadius(12)
+        .shadow(radius: 0.2)
     }
 }

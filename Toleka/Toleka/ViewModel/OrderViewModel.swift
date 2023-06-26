@@ -8,11 +8,7 @@
 import Foundation
 
 final class OrderViewModel: ObservableObject {
-    @Published private(set) var order: Order = Order(itemName: "",
-                                                     itemSubtitle: "",
-                                                     price: 0,
-                                                     quantity: 0,
-                                                     totalQuantity: 0)
+    @Published private(set) var order: Order = Order.emptyOrder
     
     func updateQuantity(_ quantity: Int) {
         order.quantity = quantity
@@ -27,20 +23,10 @@ final class OrderViewModel: ObservableObject {
     }
     
     func setOrderFor(_ product: Product) {
-        self.order = Order(itemName: product.name,
-                           itemSubtitle: product.subtitle,
-                           price: product.price,
-                           quantity: 1,
-                           totalQuantity: product.available)
+        self.order = Order(id: products.count+1, product: product, quantity: 1)
     }
     
-    func addOrderToCart(_ order: Order) {
-        
-    }
-    
-    func orderNow(_ order: Order) {
-        
-    }
+    func addOrderToCart() { }
     
     func generateProducts() -> [Product] {
         var products: [Product] = []
@@ -56,5 +42,14 @@ final class OrderViewModel: ObservableObject {
         products.append(Product(id: UUID(), coverImage: "image9.jpg", name: "9kg LPG Cylinder", subtitle: "Perfect for residential cooking", description: "This 9kg LPG cylinder is designed specifically for residential cooking purposes.", price: 55, currency: .usd, weight: 9))
         
         return products
+    }
+    
+    
+    func getLocations() -> [Location] {
+        Location.examples
+    }
+    
+    func checkoutOrder() {
+        
     }
 }

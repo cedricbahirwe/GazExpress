@@ -178,11 +178,3 @@ struct ItemSelectionView: View {
         }
     }
 }
-
-enum NavRoute: Hashable {
-    case home
-    case profile(ProfileData)
-    case cart
-    case history
-    case buyNew
-}
