@@ -69,10 +69,7 @@ struct ProductRowView: View {
     
     var body: some View {
         HStack {
-            Image("gas-container")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 60, height: 60)
+            RowImage("gas-container")
             
             VStack(alignment: .leading) {
                 Text(product.name)

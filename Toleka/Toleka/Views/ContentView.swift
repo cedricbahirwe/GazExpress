@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @StateObject private var orderVM = OrderViewModel()
+    @StateObject private var cartVM = CartViewModel()
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -42,7 +43,7 @@ struct ContentView: View {
                     case let .profile(profile):
                         ProfileView(profile: profile, navPath: $navPath)
                     case .cart:
-                        CartView()
+                        CartView(cartVM: cartVM)
                     case .history:
                         HistoryView()
                     case .buyNew:

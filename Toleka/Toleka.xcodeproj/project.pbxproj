@@ -12,7 +12,6 @@
 		CB4551712A45E217000BD0B1 /* RefillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4551702A45E217000BD0B1 /* RefillView.swift */; };
 		CB4551732A45E223000BD0B1 /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4551722A45E223000BD0B1 /* BuyView.swift */; };
 		CB4551752A45EADD000BD0B1 /* CartPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4551742A45EADD000BD0B1 /* CartPreview.swift */; };
-		CB6CD7802A458DC2006241CC /* CartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CD77F2A458DC2006241CC /* CartData.swift */; };
 		CB6CD7822A458DCB006241CC /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CD7812A458DCB006241CC /* ProfileData.swift */; };
 		CB6CD7842A45A70D006241CC /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6CD7832A45A70D006241CC /* Protocols.swift */; };
 		CBA41C912A44D33D0019E0B7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C902A44D33D0019E0B7 /* HomeView.swift */; };
@@ -22,6 +21,10 @@
 		CBA41C9C2A44E7550019E0B7 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA41C9B2A44E7550019E0B7 /* CartView.swift */; };
 		CBF7491C2A49655B00092EEF /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7491B2A49655B00092EEF /* CheckoutView.swift */; };
 		CBF7491E2A49662000092EEF /* TitledFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7491D2A49662000092EEF /* TitledFieldView.swift */; };
+		CBF749202A4986CF00092EEF /* RowImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7491F2A4986CF00092EEF /* RowImage.swift */; };
+		CBF749242A4989F700092EEF /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF749232A4989F700092EEF /* Order.swift */; };
+		CBF749262A498A0100092EEF /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF749252A498A0100092EEF /* Cart.swift */; };
+		CBF749282A498A8C00092EEF /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF749272A498A8C00092EEF /* CartViewModel.swift */; };
 		CBF7D2EB2A43942F00C845E6 /* TolekaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */; };
 		CBF7D2ED2A43942F00C845E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2EC2A43942F00C845E6 /* ContentView.swift */; };
 		CBF7D2EF2A43943100C845E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF7D2EE2A43943100C845E6 /* Assets.xcassets */; };
@@ -59,7 +62,6 @@
 		CB4551702A45E217000BD0B1 /* RefillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefillView.swift; sourceTree = "<group>"; };
 		CB4551722A45E223000BD0B1 /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
 		CB4551742A45EADD000BD0B1 /* CartPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPreview.swift; sourceTree = "<group>"; };
-		CB6CD77F2A458DC2006241CC /* CartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartData.swift; sourceTree = "<group>"; };
 		CB6CD7812A458DCB006241CC /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		CB6CD7832A45A70D006241CC /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		CB9E29C52A45AED8006C5938 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +72,10 @@
 		CBA41C9B2A44E7550019E0B7 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		CBF7491B2A49655B00092EEF /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		CBF7491D2A49662000092EEF /* TitledFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledFieldView.swift; sourceTree = "<group>"; };
+		CBF7491F2A4986CF00092EEF /* RowImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowImage.swift; sourceTree = "<group>"; };
+		CBF749232A4989F700092EEF /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		CBF749252A498A0100092EEF /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		CBF749272A498A8C00092EEF /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		CBF7D2E72A43942F00C845E6 /* Toleka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toleka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TolekaApp.swift; sourceTree = "<group>"; };
 		CBF7D2EC2A43942F00C845E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,9 +141,10 @@
 			isa = PBXGroup;
 			children = (
 				CBA41C942A44DC610019E0B7 /* GasTariff.swift */,
-				CB6CD77F2A458DC2006241CC /* CartData.swift */,
 				CB6CD7812A458DCB006241CC /* ProfileData.swift */,
 				CBFC7A362A4886A90082411F /* Product.swift */,
+				CBF749232A4989F700092EEF /* Order.swift */,
+				CBF749252A498A0100092EEF /* Cart.swift */,
 				CB6CD7832A45A70D006241CC /* Protocols.swift */,
 			);
 			path = Models;
@@ -148,6 +155,7 @@
 			children = (
 				CBA41C972A44DC890019E0B7 /* LargeButton.swift */,
 				CBF7491D2A49662000092EEF /* TitledFieldView.swift */,
+				CBF7491F2A4986CF00092EEF /* RowImage.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -217,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				CBFC7A342A4886010082411F /* OrderViewModel.swift */,
+				CBF749272A498A8C00092EEF /* CartViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -351,9 +360,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB6CD7802A458DC2006241CC /* CartData.swift in Sources */,
 				CBA41C9C2A44E7550019E0B7 /* CartView.swift in Sources */,
 				CBF7D2F42A43943100C845E6 /* Persistence.swift in Sources */,
+				CBF749262A498A0100092EEF /* Cart.swift in Sources */,
+				CBF749202A4986CF00092EEF /* RowImage.swift in Sources */,
 				CB4551732A45E223000BD0B1 /* BuyView.swift in Sources */,
 				CB45516F2A45E1D1000BD0B1 /* PurchaseView.swift in Sources */,
 				CB4551712A45E217000BD0B1 /* RefillView.swift in Sources */,
@@ -366,8 +376,10 @@
 				CB45516D2A45E042000BD0B1 /* HistoryView.swift in Sources */,
 				CBA41C912A44D33D0019E0B7 /* HomeView.swift in Sources */,
 				CBA41C952A44DC610019E0B7 /* GasTariff.swift in Sources */,
+				CBF749282A498A8C00092EEF /* CartViewModel.swift in Sources */,
 				CBF7491E2A49662000092EEF /* TitledFieldView.swift in Sources */,
 				CB6CD7842A45A70D006241CC /* Protocols.swift in Sources */,
+				CBF749242A4989F700092EEF /* Order.swift in Sources */,
 				CBF7D31E2A4397BF00C845E6 /* AuthenticationView.swift in Sources */,
 				CBF7491C2A49655B00092EEF /* CheckoutView.swift in Sources */,
 				CBFC7A372A4886A90082411F /* Product.swift in Sources */,
