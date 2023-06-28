@@ -77,8 +77,6 @@ struct RefillView: View {
                             }
                         }
                     }
-                    .background(.background)
-                    .cornerRadius(12)
 
             } header: {
                 Text("Quantity")
@@ -108,8 +106,6 @@ struct RefillView: View {
                             }
                         }
                     }
-                    .background(.background)
-                    .cornerRadius(12)
 
             } header: {
                 Text("Brand/Company")
@@ -150,6 +146,7 @@ struct RefillView_Previews: PreviewProvider {
         NavigationStack {
             RefillView(orderVM: OrderViewModel())
                 .navigationBarTitleDisplayMode(.inline)
+                .preferredColorScheme(.dark)
         }
     }
 }
