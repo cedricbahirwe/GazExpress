@@ -50,7 +50,7 @@ struct ContentView: View {
                     case .buyNew:
                         BuyView(navPath: $navPath, orderVM: orderVM)
                     case .checkout:
-                        CheckoutView(order: orderVM.order,
+                        CheckoutView(cart: orderVM.cart,
                                      locations: orderVM.getLocations()) {
                             navPath.removeLast()
                         } onPayWithMomo: { location, address in

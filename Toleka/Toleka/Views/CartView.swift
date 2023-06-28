@@ -25,7 +25,7 @@ struct CartView: View {
             } else {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack {
-                        Text("Total: \(orderVM.cart.totalPrice.asMoney())")
+                        Text("Total: \(orderVM.cart.total)")
                             .font(.title2)
                             .fontWeight(.medium)
                             .fontDesign(.rounded)
@@ -46,7 +46,9 @@ struct CartView: View {
                             CartRowView(
                                 order: order,
                                 onDeleteClicked: {
-                                    orderVM.removeOrderFromCart(order)
+                                    withAnimation {
+                                        orderVM.removeOrderFromCart(order)
+                                    }
                                 })
                         }
                     }
@@ -90,7 +92,7 @@ private struct CartRowView: View {
                 Text(order.itemName)
                     .textCase(.uppercase)
                 
-                Text("\(String(format: "%.2f \(order.currencyCode)", order.price, order.totalPrice)) X \(order.quantity)")
+                Text("\(order.total) X \(order.quantity)")
                     .fontDesign(.rounded)
                     .fontWeight(.medium)
                     .foregroundColor(.secondary)
@@ -102,19 +104,13 @@ private struct CartRowView: View {
             Image(systemName: "trash.fill")
                 .imageScale(.large)
                 .foregroundColor(.red)
-                .padding()
+                .padding(5)
                 .contentShape(Rectangle())
                 .onTapGesture(perform: onDeleteClicked)
         }
-        .padding()
+        .padding(14)
         .background(.background)
         .cornerRadius(12)
         .shadow(radius: 0.2)
-    }
-}
-
-extension Double {
-    func asMoney(_ digits: Int = 2) -> String {
-        String(format: "%.2f", self)
     }
 }

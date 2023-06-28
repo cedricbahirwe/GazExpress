@@ -17,7 +17,7 @@ struct CartButton: View {
                 .overlay {
                     Text(String(count))
                         .font(.caption)
-                        .frame(width: 24, height: 24)
+                        .frame(width: 20, height: 20)
                         .background(.ultraThinMaterial)
                         .clipShape(Circle())
                         .offset(x: 12, y: -12)

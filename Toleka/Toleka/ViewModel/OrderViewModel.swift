@@ -10,8 +10,6 @@ import Foundation
 final class OrderViewModel: ObservableObject {
     @Published private(set) var order: Order = Order.emptyOrder
     @Published private(set) var cart: Cart = Cart.emptyCart
-    
-    
     @Published private(set) var products: [Product] = []
     
     init() {
@@ -24,6 +22,10 @@ final class OrderViewModel: ObservableObject {
         } else {
             self.order = Order(id: product.id, product: product, quantity: 1)
         }
+    }
+    
+    func cartContains(_ product: Product) -> Bool {
+        cart.getOrderFor(product) != nil
     }
     
     func addOrderToCart(_ order: Order) {

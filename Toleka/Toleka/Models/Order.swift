@@ -18,9 +18,15 @@ extension Order {
     var itemSubtitle: String { product.subtitle}
     var price: Double { product.price }
     var totalQuantity: Int { product.available }
-    var currencyCode: String { product.currency.code }
     
     var totalPrice: Double { Double(quantity) * price }
+    
+    var unitPrice: String {
+        price.asCurrency(product.currency)
+    }
+    var total: String {
+        totalPrice.asCurrency(product.currency)
+    }
     
     static let example = Order(id: (100...100).randomElement()!,
                                product: .example,

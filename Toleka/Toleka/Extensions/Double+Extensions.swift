@@ -13,3 +13,8 @@ extension Equatable {
     }
 }
 
+extension Double {
+    func asCurrency(_ curreny: Currency) -> String {
+        formatted(.currency(code: curreny.code))
+    }
+}

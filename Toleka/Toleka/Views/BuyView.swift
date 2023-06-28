@@ -16,7 +16,9 @@ struct BuyView: View {
     var body: some View {
         List {
             ForEach(orderVM.products) { product in
-                ProductRowView(product: product)
+                ProductRowView(
+                    product: product,
+                    isInCart: orderVM.cartContains(product))
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
                     .onTapGesture {
@@ -60,6 +62,7 @@ struct BuyView_Previews: PreviewProvider {
 
 struct ProductRowView: View {
     let product: Product
+    var isInCart: Bool = true
     var isPreview: Bool = false
     
     var body: some View {
@@ -76,6 +79,13 @@ struct ProductRowView: View {
                     .foregroundColor(.secondary)
             }
         }
+        .overlay(alignment: .leading, content: {
+            Circle()
+                .fill(Color.accentColor)
+                .frame(width: 8, height: 8)
+                .opacity(isInCart ? 1 : 0)
+                .offset(x: -8)
+        })
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.background)

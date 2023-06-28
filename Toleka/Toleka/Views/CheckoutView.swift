@@ -8,19 +8,30 @@
 import SwiftUI
 
 struct CheckoutView: View {
-    let order: Order
+    let cart: Cart
     let locations: [Location]
     
     let onCancelOrder: () -> Void
     let onPayWithMomo: (_ location: Location, _ address: String) -> Void
     
-    @State private var orderLocation = Location.empty
+    @State private var orderLocation: Location
     @State private var orderAddress = ""
     @State private var showCancelSheet = false
     
+    init(cart: Cart,
+         locations: [Location],
+         onCancelOrder: @escaping () -> Void,
+         onPayWithMomo: @escaping (_: Location, _: String) -> Void) {
+        self.cart = cart
+        self.locations = locations
+        self.onCancelOrder = onCancelOrder
+        self.onPayWithMomo = onPayWithMomo
+        self._orderLocation = State(wrappedValue: locations.first ?? .empty)
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Total Amount: \(String(format: "%0.2f", order.totalPrice)) \(order.currencyCode)")
+            Text("Total Amount: \(cart.total)")
                 .font(.title3)
                 .fontDesign(.rounded)
                 .padding()
@@ -32,7 +43,7 @@ struct CheckoutView: View {
                     .font(.headline)
                     .fontDesign(.rounded)
                 
-                CheckoutRowView(order: order)
+                ForEach(cart.orders, content: CheckoutRowView.init)
                 
                 VStack(spacing: 4) {
                     HStack {
@@ -72,7 +83,7 @@ struct CheckoutView: View {
             
         }
         .background(Color(.secondarySystemBackground))
-        .navigationTitle("Order - #\(order.id)")
+        .navigationTitle("Order - #\(cart.id)")
         .confirmationDialog("Cancel Order",
                             isPresented: $showCancelSheet,
                             titleVisibility: .visible) {
@@ -87,7 +98,7 @@ struct CheckoutView: View {
 struct CheckoutView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CheckoutView(order: .example,
+            CheckoutView(cart: .example,
                          locations: Location.examples,
                          onCancelOrder: {},
                          onPayWithMomo: { _,_  in })
@@ -107,7 +118,8 @@ struct CheckoutRowView: View {
                 Text(order.itemName)
                     .textCase(.uppercase)
                 
-                Text("\(String(format: "%.2f \(order.currencyCode)", order.price, order.totalPrice)) X \(order.quantity)")
+                Text("\(order.unitPrice) X \(order.quantity)")
+//                Text("\(String(format: "%.2f \(order.currencyCode)", order.price, order.totalPrice)) X \(order.quantity)")
                     .fontDesign(.rounded)
                     .fontWeight(.medium)
                     .foregroundColor(.secondary)
