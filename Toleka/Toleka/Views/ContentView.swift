@@ -12,7 +12,6 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @StateObject private var orderVM = OrderViewModel()
-//    @StateObject private var historyVM = HistoryViewModel()
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -49,6 +48,8 @@ struct ContentView: View {
                         HistoryView(historyVM: orderVM.historyVM)
                     case .buyNew:
                         BuyView(navPath: $navPath, orderVM: orderVM)
+                    case .refill:
+                        RefillView(orderVM: orderVM)
                     case .checkout:
                         CheckoutView(
                             cart: orderVM.cart,
@@ -78,5 +79,6 @@ enum NavRoute: Hashable {
     case cart
     case history
     case buyNew
+    case refill
     case checkout
 }

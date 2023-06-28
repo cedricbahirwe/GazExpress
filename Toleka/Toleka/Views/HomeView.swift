@@ -74,8 +74,8 @@ struct HomeView: View {
                             ItemSelectionView(icon: Image("gas-container"), title: "Buy New")
                         }
                         
-                        ItemSelectionView(icon: Image("gas-refill"), title: "Refill Gas") {
-                            
+                        NavigationLink(value: NavRoute.refill) {
+                            ItemSelectionView(icon: Image("gas-refill"), title: "Refill Gas")
                         }
                     }
                     
