@@ -15,10 +15,14 @@ struct History: Codifiable {
     let date: Date
     let status: OrderStatus
     
-    enum OrderStatus: String, Codable {
+    enum OrderStatus: String, Codable, CaseIterable {
         case pending
         case completed
         case unfinished
+        
+        static func random() -> OrderStatus {
+            allCases.randomElement()!
+        }
     }
 }
 

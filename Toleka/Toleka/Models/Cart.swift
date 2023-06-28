@@ -8,7 +8,7 @@
 import Foundation
 
 struct Cart: Codifiable {
-    let id: Int
+    var id: Int
     private(set) var orders: [Order] = []
     
     var phone: String?
@@ -44,10 +44,7 @@ struct Cart: Codifiable {
     }
     
     mutating func clear() {
-        orders = []
-        phone = nil
-        address = nil
-        location = nil
+        self = Cart(id: Int.random(in: id+1...100))
     }
 }
 

@@ -43,53 +43,55 @@ struct CheckoutView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(.regularMaterial)
             
-            VStack(alignment: .leading) {
-                Text("Items:")
-                    .font(.headline)
-                    .fontDesign(.rounded)
-                
-                ForEach(cart.orders, content: CheckoutRowView.init)
-                
-                TitledFieldView(title: "Number To Pay", text: $phoneNumber)
-                    .keyboardType(.phonePad)
-                
-                VStack(spacing: 4) {
-                      
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text("Items:")
+                        .font(.headline)
+                        .fontDesign(.rounded)
+                    
+                    
+                    ForEach(cart.orders, content: CheckoutRowView.init)
+                    
+                    TitledFieldView(title: "Number To Pay", text: $phoneNumber)
+                        .keyboardType(.phonePad)
+                    
+                    VStack(spacing: 4) {
+                        
+                        
+                        HStack {
+                            Text("Location")
+                            Spacer()
+                            Picker("Location", selection: $orderLocation) {
+                                ForEach(locations) {
+                                    Text($0.name)
+                                        .tag($0)
+                                }
+                            }
+                            .labelsHidden()
+                            .pickerStyle(.menu)
+                        }
+                        
+                        Divider()
+                            .frame(height: 1)
+                            .overlay(Color.accentColor)
+                    }
+                    
+                    TitledFieldView(title: "Exact Home Address", text: $orderAddress)
                     
                     HStack {
-                        Text("Location")
-                        Spacer()
-                        Picker("Location", selection: $orderLocation) {
-                            ForEach(locations) {
-                                Text($0.name)
-                                    .tag($0)
-                            }
+                        LargeButton("Cancel Order", tint: .red, foreground: .white) {
+                            showCancelSheet.toggle()
                         }
-                        .labelsHidden()
-                        .pickerStyle(.menu)
+                        
+                        LargeButton("Pay with Momo", action: {
+                            showCompletionAlert = true
+                        })
+                        .padding(.vertical)
                     }
-                    
-                    Divider()
-                        .frame(height: 1)
-                        .overlay(Color.accentColor)
                 }
+                .padding(.horizontal)
                 
-                TitledFieldView(title: "Exact Home Address", text: $orderAddress)
-                
-                HStack {
-                    LargeButton("Cancel Order", tint: .red, foreground: .white) {
-                        showCancelSheet.toggle()
-                    }
-                    
-                    LargeButton("Pay with Momo", action: {
-                        showCompletionAlert = true
-                    })
-                    .padding(.vertical)
-                }
             }
-            .padding(.horizontal)
-            
-            Spacer()
             
         }
         .background(Color(.secondarySystemBackground))

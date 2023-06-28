@@ -29,6 +29,9 @@ struct HistoryView: View {
         .background(Color(.secondarySystemBackground))
         .toolbarColorScheme(.dark, for: .navigationBar)
         .navigationTitle("My Orders")
+        .onAppear() {
+            historyVM.loadHistory()
+        }
     }
 }
 
