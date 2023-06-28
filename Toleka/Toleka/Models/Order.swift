@@ -8,11 +8,12 @@
 import Foundation
 
 struct Order: Identifiable, Equatable {
-    
     let id: Int
     let product: Product
     var quantity: Int
-    
+}
+
+extension Order {
     var itemName: String { product.name }
     var itemSubtitle: String { product.subtitle}
     var price: Double { product.price }

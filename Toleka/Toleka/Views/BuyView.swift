@@ -9,9 +9,10 @@ import SwiftUI
 
 struct BuyView: View {
     @Binding var navPath: NavigationPath
+    @ObservedObject var orderVM: OrderViewModel
 
     @State private var showCartPreview = false
-    @ObservedObject var orderVM: OrderViewModel
+    
     var body: some View {
         List {
             ForEach(orderVM.products) { product in
@@ -20,8 +21,8 @@ struct BuyView: View {
                     .listRowBackground(Color.clear)
                     .onTapGesture {
                         withAnimation {
-                            showCartPreview = true
                             orderVM.setOrderFor(product)
+                            showCartPreview = true
                         }
                     }
             }
@@ -30,22 +31,16 @@ struct BuyView: View {
         .background(Color(.secondarySystemBackground))
         .scrollContentBackground(.hidden)
         .toolbar {
-            NavigationLink(value: NavRoute.cart) {
-                Image(systemName: "cart.fill")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                
-            }
+            CartButton(count: orderVM.getCartCount())
         }
         .navigationTitle("New Purchase")
         .sheet(isPresented: $showCartPreview) {
-            CartPreview(item: orderVM.order,
-                        onOrderNowClicked: {
-                navPath.append(NavRoute.checkout)
-                
-            },
-                        onAddToCartClicked: orderVM.addOrderToCart,
-                        onQuantityChanged: orderVM.updateQuantity)
+            CartPreview(
+                order: orderVM.order,
+                onOrderNowClicked: { order in
+                    orderVM.addOrderToCart(order)
+                    navPath.append(NavRoute.checkout)
+                }, onAddToCartClicked: orderVM.addOrderToCart)
             .presentationDetents([.height(250)])
             .presentationBackground(.ultraThickMaterial)
             .presentationCornerRadius(20)

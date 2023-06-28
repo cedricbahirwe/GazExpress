@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct CartView: View {
-    @ObservedObject var cartVM: CartViewModel
-    var isCartEmpty = false
+    @ObservedObject var orderVM: OrderViewModel
+    var onOrderClicked: () -> Void
+    
+    var isCartEmpty: Bool {
+        orderVM.cart.orders.isEmpty
+    }
     
     var body: some View {
         Group {
@@ -20,43 +24,37 @@ struct CartView: View {
                     .padding(30)
             } else {
                 VStack(alignment: .leading, spacing: 20) {
-//
-//                    HStack {
-//                        Text("Total: \(cartVM.cart.totalPrice)")
-//                            .font(.title2)
-//                            .fontWeight(.medium)
-//                            .fontDesign(.rounded)
-//
-//                        Spacer()
-//
-//                        LargeButton("Order Now") {
-//
-//                        }
-//                        .frame(maxWidth: 120)
-//                    }
-//                    .padding()
-//                    .frame(maxWidth: .infinity)
-//                    .background(.ultraThickMaterial)
-//                    .cornerRadius(12)
-//                    .shadow(radius: 1)
-//
-//                    ForEach(cartVM.cart.orders) { order in
-//                        CartRowView(order: order) {
-//                            cartVM.deleteOrder(order)
-//                        }
-//                    }
-//
-//
-//                    CartRowView(order: .example) {
-//
-//                    }
-//
-//
-                    Spacer()
+                    HStack {
+                        Text("Total: \(orderVM.cart.totalPrice.asMoney())")
+                            .font(.title2)
+                            .fontWeight(.medium)
+                            .fontDesign(.rounded)
+
+                        Spacer()
+
+                        LargeButton("Order Now", action: onOrderClicked)
+                            .frame(maxWidth: 120)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(.ultraThickMaterial)
+                    .cornerRadius(12)
+                    .shadow(radius: 1)
+
+                    ScrollView {
+                        ForEach(orderVM.cart.orders) { order in
+                            CartRowView(
+                                order: order,
+                                onDeleteClicked: {
+                                    orderVM.removeOrderFromCart(order)
+                                })
+                        }
+                    }
                 }
                 .padding()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .toolbarBackground(Color.accentColor, for: .navigationBar, .tabBar)
         .background(Color(.secondarySystemBackground))
         .toolbarColorScheme(.dark, for: .navigationBar)
@@ -65,10 +63,14 @@ struct CartView: View {
 }
 
 struct CartView_Previews: PreviewProvider {
+    static let vm = OrderViewModel()
     static var previews: some View {
         NavigationView {
-            CartView(cartVM: CartViewModel())
+            CartView(orderVM: vm, onOrderClicked: {})
                 .navigationBarTitleDisplayMode(.inline)
+                .onAppear() {
+                    vm.addOrderToCart(.example)
+                }
 //                .preferredColorScheme(.dark)
         }
     }
@@ -108,5 +110,11 @@ private struct CartRowView: View {
         .background(.background)
         .cornerRadius(12)
         .shadow(radius: 0.2)
+    }
+}
+
+extension Double {
+    func asMoney(_ digits: Int = 2) -> String {
+        String(format: "%.2f", self)
     }
 }

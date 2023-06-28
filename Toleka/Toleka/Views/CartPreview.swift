@@ -9,52 +9,45 @@ import SwiftUI
 
 struct CartPreview: View {
     @Environment(\.dismiss) private var dismiss
-    private let item: Order
+    @State var order: Order
+        
+    var onOrderNowClicked: (Order) -> Void
+    var onAddToCartClicked: (Order) -> Void
     
-    @State private var quantity: Int
-    
-    var onOrderNowClicked: () -> Void
-    var onAddToCartClicked: () -> Void
-    var onQuantityChanged: (Int) -> Void = { _ in }
-    
-    init(item: Order,
-         onOrderNowClicked: @escaping () -> Void,
-         onAddToCartClicked: @escaping () -> Void,
-         onQuantityChanged: @escaping (Int) -> Void = { _ in }) {
-        self.item = item
-        self._quantity = State(wrappedValue: item.quantity)
+    init(order: Order,
+         onOrderNowClicked: @escaping (Order) -> Void,
+         onAddToCartClicked: @escaping (Order) -> Void) {
+        self._order = State(wrappedValue: order)
         self.onOrderNowClicked = onOrderNowClicked
         self.onAddToCartClicked = onAddToCartClicked
-        self.onQuantityChanged = onQuantityChanged
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(item.itemName)
+            Text(order.itemName)
                 .font(.title2)
                 .fontDesign(.rounded)
                 .textCase(.uppercase)
             
-            Text(item.itemSubtitle)
+            Text(order.itemSubtitle)
                 .font(.headline)
                 .foregroundColor(.secondary)
             
-            Stepper("Enter Quantity: ", value: $quantity, in: 1...item.totalQuantity)
-                .onChange(of: quantity, perform: onQuantityChanged)
+            Stepper("Enter Quantity: ", value: $order.quantity, in: 1...order.totalQuantity)
             
-            Text("Total: \(item.quantity) * \(String(format: "%.2f$ = %.2f", item.price, item.totalPrice))$")
+            Text("Total: \(order.quantity) * \(String(format: "%.2f$ = %.2f", order.price, order.totalPrice))$")
                 .fontDesign(.rounded)
                 .fontWeight(.bold)
             
             HStack {
                 LargeButton("Order Now", tint: .primary, foreground: Color(.systemBackground), action: {
                     dismiss()
-                    onOrderNowClicked()
+                    onOrderNowClicked(order)
                 })
                 
                 LargeButton("Add To Cart", action: {
                     dismiss()
-                    onAddToCartClicked()
+                    onAddToCartClicked(order)
                 })
             }
         }
@@ -65,7 +58,9 @@ struct CartPreview: View {
 
 struct CartPreview_Previews: PreviewProvider {
     static var previews: some View {
-        CartPreview(item: .example, onOrderNowClicked: {}, onAddToCartClicked: {})  
+        CartPreview(order: .example,
+                    onOrderNowClicked: { _ in },
+                    onAddToCartClicked: { _ in })
             .previewLayout(.sizeThatFits)
     }
 }

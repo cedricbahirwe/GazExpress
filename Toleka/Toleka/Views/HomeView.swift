@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Binding var navPath: NavigationPath
+    @ObservedObject var orderVM: OrderViewModel
+    
     private let tariffs = [
         GasTariff(type: "6Kg", price: 15),
         GasTariff(type: "12Kg", price: 30),
         GasTariff(type: "15Kg", price: 36)
     ]
+    
     @AppStorage("isLoggedIn") private var isLoggedIn = false
     @State private var goToProfile = false
     @State private var goToCart = false
-    
-    @Binding var navPath: NavigationPath
     
     @State private var presentCallActionSheet = false
     
@@ -40,11 +42,7 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    NavigationLink(value: NavRoute.cart) {
-                        Image(systemName: "cart.fill")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                    }
+                    CartButton(count: orderVM.getCartCount())
                 }
                 .foregroundColor(.white)
                 
@@ -133,7 +131,8 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            HomeView(navPath: .constant(.init()))
+            HomeView(navPath: .constant(.init()),
+                     orderVM: OrderViewModel())
         }
     }
 }

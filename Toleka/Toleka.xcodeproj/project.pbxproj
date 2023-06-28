@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB23F0502A4C36F60010C4CE /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23F04F2A4C36F60010C4CE /* Double+Extensions.swift */; };
+		CB23F0542A4C37010010C4CE /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23F0532A4C37010010C4CE /* Array+Extensions.swift */; };
+		CB23F0582A4C3B060010C4CE /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23F0572A4C3B060010C4CE /* CartButton.swift */; };
 		CB45516D2A45E042000BD0B1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB45516C2A45E042000BD0B1 /* HistoryView.swift */; };
 		CB45516F2A45E1D1000BD0B1 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB45516E2A45E1D1000BD0B1 /* PurchaseView.swift */; };
 		CB4551712A45E217000BD0B1 /* RefillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4551702A45E217000BD0B1 /* RefillView.swift */; };
@@ -57,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB23F04F2A4C36F60010C4CE /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		CB23F0532A4C37010010C4CE /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		CB23F0572A4C3B060010C4CE /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
 		CB45516C2A45E042000BD0B1 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		CB45516E2A45E1D1000BD0B1 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
 		CB4551702A45E217000BD0B1 /* RefillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefillView.swift; sourceTree = "<group>"; };
@@ -118,6 +124,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB23F04E2A4C36E60010C4CE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CB23F04F2A4C36F60010C4CE /* Double+Extensions.swift */,
+				CB23F0532A4C37010010C4CE /* Array+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CBA41C922A44DC4D0019E0B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +171,7 @@
 				CBA41C972A44DC890019E0B7 /* LargeButton.swift */,
 				CBF7491D2A49662000092EEF /* TitledFieldView.swift */,
 				CBF7491F2A4986CF00092EEF /* RowImage.swift */,
+				CB23F0572A4C3B060010C4CE /* CartButton.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -185,6 +201,7 @@
 			children = (
 				CB9E29C52A45AED8006C5938 /* Info.plist */,
 				CBF7D2EA2A43942F00C845E6 /* TolekaApp.swift */,
+				CB23F04E2A4C36E60010C4CE /* Extensions */,
 				CBFC7A332A4885F50082411F /* ViewModel */,
 				CBA41C932A44DC520019E0B7 /* Models */,
 				CBA41C922A44DC4D0019E0B7 /* Views */,
@@ -363,7 +380,9 @@
 				CBA41C9C2A44E7550019E0B7 /* CartView.swift in Sources */,
 				CBF7D2F42A43943100C845E6 /* Persistence.swift in Sources */,
 				CBF749262A498A0100092EEF /* Cart.swift in Sources */,
+				CB23F0542A4C37010010C4CE /* Array+Extensions.swift in Sources */,
 				CBF749202A4986CF00092EEF /* RowImage.swift in Sources */,
+				CB23F0582A4C3B060010C4CE /* CartButton.swift in Sources */,
 				CB4551732A45E223000BD0B1 /* BuyView.swift in Sources */,
 				CB45516F2A45E1D1000BD0B1 /* PurchaseView.swift in Sources */,
 				CB4551712A45E217000BD0B1 /* RefillView.swift in Sources */,
@@ -374,6 +393,7 @@
 				CBF7D2EB2A43942F00C845E6 /* TolekaApp.swift in Sources */,
 				CBA41C982A44DC890019E0B7 /* LargeButton.swift in Sources */,
 				CB45516D2A45E042000BD0B1 /* HistoryView.swift in Sources */,
+				CB23F0502A4C36F60010C4CE /* Double+Extensions.swift in Sources */,
 				CBA41C912A44D33D0019E0B7 /* HomeView.swift in Sources */,
 				CBA41C952A44DC610019E0B7 /* GasTariff.swift in Sources */,
 				CBF749282A498A8C00092EEF /* CartViewModel.swift in Sources */,
