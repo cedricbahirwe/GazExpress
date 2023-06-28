@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @ObservedObject var historyVM: HistoryViewModel
+    let historyVM: HistoryViewModel
     var body: some View {
         VStack {
             if historyVM.records.isEmpty {
@@ -29,9 +29,6 @@ struct HistoryView: View {
         .background(Color(.secondarySystemBackground))
         .toolbarColorScheme(.dark, for: .navigationBar)
         .navigationTitle("My Orders")
-        .onAppear() {
-            historyVM.loadHistory()
-        }
     }
 }
 

@@ -7,14 +7,10 @@
 
 import Foundation
 
-final class HistoryViewModel : ObservableObject {
+final class HistoryViewModel: ObservableObject {
     @Published private(set) var records: [History] = []
     
     init() {
-        self.loadHistory()
-    }
-    
-    func loadHistory() {
         self.records = getHistory()
     }
     
@@ -27,6 +23,32 @@ final class HistoryViewModel : ObservableObject {
         } catch {
             print(error.localizedDescription)
             return []
+        }
+    }
+    
+    
+    func saveCartToHistory(_ newItem: History) {
+        let defaults = UserDefaults.standard
+        
+        do {
+            if let savedHistoryData = defaults.data(forKey: UserDefaultsKeys.history.rawValue),
+               !savedHistoryData.isEmpty {
+                var newHistory = try JSONDecoder().decode([History].self, from: savedHistoryData)
+                newHistory.append(newItem)
+                
+                try saveItems(newHistory)
+                                
+            } else {
+                try saveItems([newItem])
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        func saveItems(_ history: [History]) throws {
+            let historyData = try JSONEncoder().encode(history)
+            defaults.set(historyData, forKey: UserDefaultsKeys.history.rawValue)
+            self.records = history
         }
     }
 }

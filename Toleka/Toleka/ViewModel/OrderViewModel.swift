@@ -12,6 +12,8 @@ final class OrderViewModel: ObservableObject {
     @Published private(set) var cart: Cart = Cart.emptyCart
     @Published private(set) var products: [Product] = []
     
+    @Published var historyVM = HistoryViewModel()
+    
     init() {
         self.products = generateProducts()
     }
@@ -47,34 +49,10 @@ final class OrderViewModel: ObservableObject {
         
         let history = History(cart: cart, date: .now, status: .random())
         
-        saveCartToHistory(history)
+        historyVM.saveCartToHistory(history)
         clearCart()
     }
     
-    func saveCartToHistory(_ newItem: History) {
-        let defaults = UserDefaults.standard
-        
-        do {
-            if let savedHistoryData = defaults.data(forKey: UserDefaultsKeys.history.rawValue),
-               !savedHistoryData.isEmpty {
-                var newHistory = try JSONDecoder().decode([History].self, from: savedHistoryData)
-                newHistory.append(newItem)
-                
-                try saveItems(newHistory)
-                                
-            } else {
-                try saveItems([newItem])
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        func saveItems(_ history: [History]) throws {
-            let historyData = try JSONEncoder().encode(history)
-            defaults.set(historyData, forKey: UserDefaultsKeys.history.rawValue)
-        }
-        
-    }
     
     func getCartCount() -> Int {
         cart.orders.count

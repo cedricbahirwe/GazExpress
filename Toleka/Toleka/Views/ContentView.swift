@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @StateObject private var orderVM = OrderViewModel()
-    @StateObject private var historyVM = HistoryViewModel()
+//    @StateObject private var historyVM = HistoryViewModel()
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -46,7 +46,7 @@ struct ContentView: View {
                             navPath.append(NavRoute.checkout)
                         }
                     case .history:
-                        HistoryView(historyVM: historyVM)
+                        HistoryView(historyVM: orderVM.historyVM)
                     case .buyNew:
                         BuyView(navPath: $navPath, orderVM: orderVM)
                     case .checkout:
