@@ -60,7 +60,7 @@ struct BuyView_Previews: PreviewProvider {
     }
 }
 
-struct ProductRowView: View {
+private struct ProductRowView: View {
     let product: Product
     var isInCart: Bool = true
     var isPreview: Bool = false

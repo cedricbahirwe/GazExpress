@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @StateObject private var orderVM = OrderViewModel()
+    @StateObject private var historyVM = HistoryViewModel()
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -31,9 +32,8 @@ struct ContentView: View {
                 }
                 .onAppear() {
                     if isLoggedIn {
-//                        navPath.append(NavRoute.home)
+                        //                        navPath.append(NavRoute.home)
                     }
-                    
                 }
                 .navigationDestination(for: NavRoute.self) { newRoute in
                     switch newRoute {
@@ -46,16 +46,20 @@ struct ContentView: View {
                             navPath.append(NavRoute.checkout)
                         }
                     case .history:
-                        HistoryView()
+                        HistoryView(historyVM: historyVM)
                     case .buyNew:
                         BuyView(navPath: $navPath, orderVM: orderVM)
                     case .checkout:
-                        CheckoutView(cart: orderVM.cart,
-                                     locations: orderVM.getLocations()) {
-                            navPath.removeLast()
-                        } onPayWithMomo: { location, address in
-                            orderVM.checkoutOrder()
-                        }
+                        CheckoutView(
+                            cart: orderVM.cart,
+                            locations: orderVM.getLocations(),
+                            onCancelOrder: {
+                                navPath.removeLast()
+                            },
+                            onPayWithMomo: {
+                                orderVM.checkoutOrder($0)
+                                navPath.removeLast(navPath.count-1)
+                            })
                     }
                 }
         }

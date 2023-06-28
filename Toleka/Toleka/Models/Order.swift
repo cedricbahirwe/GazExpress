@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Order: Identifiable, Equatable {
+struct Order: Codifiable, Equatable {
     let id: Int
     let product: Product
     var quantity: Int
@@ -28,11 +28,15 @@ extension Order {
         totalPrice.asCurrency(product.currency)
     }
     
-    static let example = Order(id: (100...100).randomElement()!,
+}
+
+extension Order {
+    
+    static var example = Order(id: (100...100).randomElement()!,
                                product: .example,
                                quantity: 1)
     
     static let emptyOrder = Order(id: 0,
-                                  product: .init(id: .init(), coverImage: "", name: "", subtitle: "", description: "", price: 0, currency: .usd, weight: 0),
+                                  product: .init(id: .init(), coverImage: "", name: "", subtitle: "", description: "", price: 0, currency: .usd, weight: 0, available: 0),
                                   quantity: 0)
 }

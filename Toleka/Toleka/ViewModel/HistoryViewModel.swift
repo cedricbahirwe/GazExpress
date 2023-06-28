@@ -9,22 +9,25 @@ import Foundation
 
 final class HistoryViewModel : ObservableObject {
     @Published private(set) var records: [History] = []
-    // look in local database
     
+    init() {
+        self.loadHistory()
+    }
     
-}
-
-
-struct History: Identifiable {
-    var id: Int { cart.id }
+    func loadHistory() {
+        self.records = getHistory()
+    }
     
-    let cart: Order
-    
-    let status: OrderStatus
-    
-    enum OrderStatus {
-        case pending
-        case completed
-        case unfinished
+    private func getHistory() -> [History] {
+        guard let savedHistoryData = UserDefaults.standard.data(forKey: UserDefaultsKeys.history.rawValue)
+        else { return [] }
+        
+        do {
+            return try JSONDecoder().decode([History].self, from: savedHistoryData)
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
     }
 }
+
