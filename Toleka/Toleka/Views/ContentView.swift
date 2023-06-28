@@ -23,46 +23,41 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack(path: $navPath) {
-            AuthenticationView(navPath: $navPath)
-                .onChange(of: isLoggedIn) { newValue in
-                    if newValue {
-                        navPath.removeLast(navPath.count)
-                    }
-                }
-                .onAppear() {
-                    if isLoggedIn {
-                        //                        navPath.append(NavRoute.home)
-                    }
-                }
-                .navigationDestination(for: NavRoute.self) { newRoute in
-                    switch newRoute {
-                    case .home:
-                        HomeView(navPath: $navPath, orderVM: orderVM)
-                    case let .profile(profile):
-                        ProfileView(profile: profile, navPath: $navPath)
-                    case .cart:
-                        CartView(orderVM: orderVM) {
-                            navPath.append(NavRoute.checkout)
+            
+            if !isLoggedIn {
+                AuthenticationView(navPath: $navPath)
+            } else {
+                HomeView(navPath: $navPath, orderVM: orderVM)
+                    .navigationDestination(for: NavRoute.self) { newRoute in
+                        switch newRoute {
+                        case .home:
+                            HomeView(navPath: $navPath, orderVM: orderVM)
+                        case let .profile(profile):
+                            ProfileView(profile: profile, navPath: $navPath)
+                        case .cart:
+                            CartView(orderVM: orderVM) {
+                                navPath.append(NavRoute.checkout)
+                            }
+                        case .history:
+                            HistoryView(historyVM: orderVM.historyVM)
+                        case .buyNew:
+                            BuyView(navPath: $navPath, orderVM: orderVM)
+                        case .refill:
+                            RefillView(orderVM: orderVM)
+                        case .checkout:
+                            CheckoutView(
+                                cart: orderVM.cart,
+                                locations: orderVM.getLocations(),
+                                onCancelOrder: {
+                                    navPath.removeLast()
+                                },
+                                onPayWithMomo: {
+                                    orderVM.checkoutOrder($0)
+                                    navPath.removeLast(navPath.count-1)
+                                })
                         }
-                    case .history:
-                        HistoryView(historyVM: orderVM.historyVM)
-                    case .buyNew:
-                        BuyView(navPath: $navPath, orderVM: orderVM)
-                    case .refill:
-                        RefillView(orderVM: orderVM)
-                    case .checkout:
-                        CheckoutView(
-                            cart: orderVM.cart,
-                            locations: orderVM.getLocations(),
-                            onCancelOrder: {
-                                navPath.removeLast()
-                            },
-                            onPayWithMomo: {
-                                orderVM.checkoutOrder($0)
-                                navPath.removeLast(navPath.count-1)
-                            })
                     }
-                }
+            }
         }
     }
 }

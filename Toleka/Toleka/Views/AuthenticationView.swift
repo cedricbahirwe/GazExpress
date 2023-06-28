@@ -30,7 +30,7 @@ struct AuthenticationView: View {
     
     var body: some View {
         VStack(spacing: 30) {
-            Text("Toleka")
+            Text("GazExpress")
                 .font(.largeTitle)
                 .fontDesign(.serif)
                 .fontWeight(.bold)
@@ -72,7 +72,7 @@ struct AuthenticationView: View {
                 if authFlow == .login {
                     LargeButton("Login") {
                         isLoggedIn = true
-                        navPath.append(NavRoute.home)
+//                        navPath.append(NavRoute.home)
                     }
                     .matchedGeometryEffect(id: "MainCTA", in: animation)
                     
@@ -94,7 +94,7 @@ struct AuthenticationView: View {
                         .matchedGeometryEffect(id: "MainCTA", in: animation)
                         
                         LargeButton("Continue") {
-                            
+                            isLoggedIn = true
                         }
                         .matchedGeometryEffect(id: "SecondTCA", in: animation)
                     }

@@ -36,7 +36,7 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    Text("Toleka")
+                    Text("GazExpress")
                         .font(.title3)
                         .fontWeight(.bold)
                     

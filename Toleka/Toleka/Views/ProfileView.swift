@@ -11,6 +11,8 @@ struct ProfileView: View {
     @Environment(\.colorScheme) private var colorScheme
     @State var profile: ProfileData
     @Binding var navPath: NavigationPath
+    @AppStorage("isLoggedIn") private var isLoggedIn = false
+
 
     var body: some View {
         VStack {
@@ -31,6 +33,7 @@ struct ProfileView: View {
             
             LargeButton("Delete Account", tint: .red) {
                 navPath.removeLast(navPath.count)
+                isLoggedIn = false
             }
             
         }
@@ -39,6 +42,7 @@ struct ProfileView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Logout", role: .destructive) {
                     navPath.removeLast(navPath.count)
+                    isLoggedIn = false
                 }
                 .tint(.red)
             }

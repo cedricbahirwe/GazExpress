@@ -34,7 +34,7 @@
 		CBF7D2EF2A43943100C845E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF7D2EE2A43943100C845E6 /* Assets.xcassets */; };
 		CBF7D2F22A43943100C845E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF7D2F12A43943100C845E6 /* Preview Assets.xcassets */; };
 		CBF7D2F42A43943100C845E6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2F32A43943100C845E6 /* Persistence.swift */; };
-		CBF7D2F72A43943100C845E6 /* Toleka.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2F52A43943100C845E6 /* Toleka.xcdatamodeld */; };
+		CBF7D2F72A43943100C845E6 /* GazExpress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D2F52A43943100C845E6 /* GazExpress.xcdatamodeld */; };
 		CBF7D3012A43943100C845E6 /* TolekaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D3002A43943100C845E6 /* TolekaTests.swift */; };
 		CBF7D30B2A43943100C845E6 /* TolekaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D30A2A43943100C845E6 /* TolekaUITests.swift */; };
 		CBF7D30D2A43943100C845E6 /* TolekaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7D30C2A43943100C845E6 /* TolekaUITestsLaunchTests.swift */; };
@@ -210,7 +210,7 @@
 				CBA41C922A44DC4D0019E0B7 /* Views */,
 				CBF7D2EE2A43943100C845E6 /* Assets.xcassets */,
 				CBF7D2F32A43943100C845E6 /* Persistence.swift */,
-				CBF7D2F52A43943100C845E6 /* Toleka.xcdatamodeld */,
+				CBF7D2F52A43943100C845E6 /* GazExpress.xcdatamodeld */,
 				CBF7D2F02A43943100C845E6 /* Preview Content */,
 			);
 			path = Toleka;
@@ -406,7 +406,7 @@
 				CB23F05C2A4C47BA0010C4CE /* History.swift in Sources */,
 				CBF7491C2A49655B00092EEF /* CheckoutView.swift in Sources */,
 				CBFC7A372A4886A90082411F /* Product.swift in Sources */,
-				CBF7D2F72A43943100C845E6 /* Toleka.xcdatamodeld in Sources */,
+				CBF7D2F72A43943100C845E6 /* GazExpress.xcdatamodeld in Sources */,
 				CB6CD7822A458DCB006241CC /* ProfileData.swift in Sources */,
 				CB23F05A2A4C45890010C4CE /* HistoryViewModel.swift in Sources */,
 			);
@@ -571,6 +571,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Toleka/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GazExpress;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -601,6 +602,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Toleka/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GazExpress;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -737,13 +739,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CBF7D2F52A43943100C845E6 /* Toleka.xcdatamodeld */ = {
+		CBF7D2F52A43943100C845E6 /* GazExpress.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				CBF7D2F62A43943100C845E6 /* Toleka.xcdatamodel */,
 			);
 			currentVersion = CBF7D2F62A43943100C845E6 /* Toleka.xcdatamodel */;
-			path = Toleka.xcdatamodeld;
+			path = GazExpress.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

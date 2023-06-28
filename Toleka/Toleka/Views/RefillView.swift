@@ -14,25 +14,31 @@ struct RefillView: View {
     private let cylinderLayout = Array(repeating: GridItem(.flexible()), count: 5)
     private let quantityLayout = Array(repeating: GridItem(.flexible()), count: 7)
     private let brandLayout = Array(repeating: GridItem(.flexible()), count: 2)
-    
-    private let cylinders: [Double] = [6.0, 12.0, 15.0, 20.0, 25.0, 35.0, 38.0, 50.0]
-    
+        
     private let quantities: [Int] = (1...14).map({ $0 })
     
     private let gasBrands: [String] = ["MANJI GAS", "DAP GAS", "MIHAN GAS", "ABBARCI", "DEEP SKY", "ORYX", "KV GAS", "RWDA O02", "K-GAS", "TOTAL GAS", "SULFO GAS", "KIGALI GAS", "LAKE GAS", "BEST GAS", "OlL COM", "YES GAS", "METRO", "SP GAS", "CITY GAS", "S.E GAS", "HOYO", "SURAMBAYA", "MEREZ GAS", "SAFE GAS", "HASHI_EN", "MERU GAS"]
 
 
-    @State private var selectedBrands = Set<String>()
+    @State private var selectedBrand: String?
     @State private var selectedQuantity: Int?
-    @State private var selectedCylinder: Double?
+    @State private var selectedCylinder: Cylinder?
+    
+    private var totalPrice: Double {
+        if let selectedCylinder, let selectedQuantity {
+            return selectedCylinder.price * Double(selectedQuantity)
+        } else {
+            return 0.0
+        }
+    }
 
     var body: some View {
         List {
             Section {
                 LazyVGrid(columns: cylinderLayout,
                           pinnedViews: .sectionHeaders) {
-                    ForEach(cylinders, id: \.self) { cylinder in
-                        CircleButton(title: String(cylinder),
+                    ForEach(Cylinder.gasCylinders) { cylinder in
+                        CircleButton(title: String(cylinder.weight),
                                      subtitle: "Kgs",
                                      isSelected: selectedCylinder == cylinder)
                         .onTapGesture {
@@ -90,13 +96,13 @@ struct RefillView: View {
                     pinnedViews: .sectionHeaders) {
                         ForEach(gasBrands, id: \.self) { brandName in
                             LabeledCheckBox(title: brandName,
-                                            isSelected: selectedBrands.contains(brandName))
+                                            isSelected: selectedBrand == brandName)
                             .onTapGesture {
                                 withAnimation {
-                                    if selectedBrands.contains(brandName) {
-                                        selectedBrands.remove(brandName)
+                                    if selectedBrand == brandName {
+                                        selectedBrand = nil
                                     }else {
-                                        selectedBrands.insert(brandName)
+                                        selectedBrand = brandName
                                     }
                                 }
                             }
@@ -118,7 +124,7 @@ struct RefillView: View {
         .scrollContentBackground(.hidden)
         .safeAreaInset(edge: .bottom) {
             VStack(alignment: .leading) {
-                Text("Total: \(0) USD")
+                Text("Total: \(totalPrice.formatted(.currency(code: "USD")))")
                     .font(.title3)
                 HStack {
                     LargeButton("Order Now",
@@ -191,4 +197,22 @@ private struct CircleButton: View {
         }
         .foregroundColor(isSelected ? .white : .primary)
     }
+}
+
+struct Cylinder: Identifiable, Equatable {
+    var id: Double { weight }
+    
+    let weight: Double
+    let price: Double
+    
+    static let gasCylinders: [Cylinder] = [
+        Cylinder(weight: 6.0, price: 10.0),
+        Cylinder(weight: 12.0, price: 20.0),
+        Cylinder(weight: 15.0, price: 25.0),
+        Cylinder(weight: 20.0, price: 33.0),
+        Cylinder(weight: 25.0, price: 40.0),
+        Cylinder(weight: 35.0, price: 55.0),
+        Cylinder(weight: 38.0, price: 58.0),
+        Cylinder(weight: 50.0, price: 75.0)
+    ]
 }
