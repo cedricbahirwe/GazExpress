@@ -1,5 +1,18 @@
 # GazExpress
-Let's Go
+
+This is a minimalist home delivery of Gas app UI.
+
+### Features
+- **User Registration**: Allow users to create accounts or sign up using their email addresses or social media profiles.
+
+- **Gas Ordering**: Provide an intuitive interface for users to select the type and quantity of gas they require. Include options for different sizes of gas cylinders or specific gas volumes.
+
+- **Expanded Product Offering**: Enhance the user experience by offering an extended range of products that are related to gas, providing additional convenience and value.
+
+- **Order History**: Maintain a record of users' previous orders, allowing them to view and reorder easily. This feature enhances user convenience and streamlines the reordering process.
+
+- **Customer Support**: Include a support feature like a chatbot or a customer service helpline to assist users with any queries, concerns, or issues they may have.
+
 
 ## Screenshots
 
