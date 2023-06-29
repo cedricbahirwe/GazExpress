@@ -13,7 +13,6 @@ This is a minimalist home delivery of Gas app UI.
 
 - **Customer Support**: Include a support feature like a chatbot or a customer service helpline to assist users with any queries, concerns, or issues they may have.
 
-
 ## Screenshots
 
 
@@ -31,4 +30,4 @@ Cart                       |  Checkout
 
 Refill                     |  History
 :-------------------------:|:-------------------------:
-![](https://github.com/cedricbahirwe/GazExpress/assets/49038614/e2a09b9c-d182-4259-9d79-9c44f03b1d27)  |  ![](https://github.com/cedricbahirwe/GazExpress/assets/49038614/6de6fb69-73d8-48a3-9972-1850fa6be6e4)
+![](https://github.com/cedricbahirwe/GazExpress/assets/49038614/c1daeaa7-ca36-4c8e-abc5-63d1dd8bf0ef)  |  ![](https://github.com/cedricbahirwe/GazExpress/assets/49038614/6de6fb69-73d8-48a3-9972-1850fa6be6e4)
