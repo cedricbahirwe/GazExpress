@@ -41,7 +41,7 @@ struct CartView: View {
                     .cornerRadius(12)
                     .shadow(radius: 1)
 
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         ForEach(orderVM.cart.orders) { order in
                             CartRowView(
                                 order: order,
@@ -92,7 +92,7 @@ private struct CartRowView: View {
                 Text(order.itemName)
                     .textCase(.uppercase)
                 
-                Text("\(order.total) X \(order.quantity)")
+                Text("\(order.unitPrice) X \(order.quantity)")
                     .fontDesign(.rounded)
                     .fontWeight(.medium)
                     .foregroundColor(.secondary)

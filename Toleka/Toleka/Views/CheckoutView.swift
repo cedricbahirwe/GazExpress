@@ -43,7 +43,7 @@ struct CheckoutView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(.regularMaterial)
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     Text("Items:")
                         .font(.headline)

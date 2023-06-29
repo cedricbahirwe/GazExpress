@@ -14,7 +14,7 @@ struct HistoryView: View {
             if historyVM.records.isEmpty {
                 Text("You don't have any orders yet!")
             } else {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     ForEach(historyVM.records) { item in
                         NavigationLink(value: NavRoute.checkout) {
                             HistoryRowView(item: item)

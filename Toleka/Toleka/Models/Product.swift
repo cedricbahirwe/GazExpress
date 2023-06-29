@@ -12,7 +12,7 @@ struct Product: Codifiable, Equatable {
     let coverImage: String
     let name: String
     let subtitle: String
-    let description: String?
+    var description: String?
     
     let price: Double
     let currency: Currency

@@ -43,7 +43,7 @@ struct ContentView: View {
                         case .buyNew:
                             BuyView(navPath: $navPath, orderVM: orderVM)
                         case .refill:
-                            RefillView(orderVM: orderVM)
+                            RefillView(navPath: $navPath, orderVM: orderVM)
                         case .checkout:
                             CheckoutView(
                                 cart: orderVM.cart,
